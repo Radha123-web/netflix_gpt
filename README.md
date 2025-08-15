@@ -3,7 +3,33 @@
 - Create react app
 - configure talwindCSS
 - header
+- Routing of App
 - signup/login form
+ - Form Validation
+ - useRef Hook
+  -  firebase setup
+  - deploying our app to production
+  - create signup user account
+   - Implement Sign In user Api
+   -  Created Redux Store With userSlice
+   -  Implemented Sign out
+   -  Update Profile
+   -  BugFix: Sign up user displayName and profile picture update
+   -  BugFix: if the user is not logged in Redirect
+      /browse to login Page and vice- versa
+   -  fetch From TMDB Movies
+   -  Unsubscribed to the on AuthStateChanged callback
+    - Add  hardcoded value to the constants file.
+    - Register tMDB  ApI & create an app & get access token
+    -  Get Data from TMDB now playing movies list API
+    - Custom hook  for Now Playing Movies
+    -  Update Store with movies Data 
+    - Planning for MainContainer & secondary container
+    -  Fetch Data for Trailer Vedio Data
+    -   Update Store with Trailer Video Data
+    -   Embedded the Yotube Vedio and make it autoplay and mute
+    -  Tailwind Classes to make Main Container look Awesome
+
 # Features
 
 -Login/Sign Up

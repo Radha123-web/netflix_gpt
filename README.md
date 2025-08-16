@@ -35,6 +35,10 @@
     - TMDB Image CDN Component
     - Made the Browser Page good with Tailwind CSS
     - userPopularMovies Custom hook
+    - Gpt search Page
+    - Gpt Search Bar
+    -  Multi- language Feature in our App
+    - Integrate GPT APIS(get open)
 
 
 # Features

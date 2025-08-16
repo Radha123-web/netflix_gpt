@@ -7,9 +7,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react"
 import { useDispatch } from "react-redux";
 import { addUser ,removeUser} from "../utlis/userSlice";
-import { logo } from "../utlis/constants";
+import { logo, SUPPORTED_LANGUAGES } from "../utlis/constants";
+import { toogleGptSearchView } from "../utlis/gptSlice";
+import { changeLanguage } from "../utlis/configSlice";
 const Header =()=>{
   const  user =useSelector((store)=>store.user)
+  const showGptSearch=useSelector((store)=>store.gpt.ShowGptSearch)
      const navigate=useNavigate()
      const dispatch=useDispatch()
    
@@ -48,8 +51,14 @@ useEffect(()=>{
 return()=> unsubscribe();
  },[])
 
+ const handleGptSearchClick=()=>{
+  dispatch(toogleGptSearchView())
+ }
 
 
+ const handleLanguageChange=(e)=>{
+  dispatch(changeLanguage(e.target.value))
+ }
 
 
 
@@ -69,14 +78,23 @@ return()=> unsubscribe();
   {/* User Section */}
   {user && (
     <div className="flex items-center gap-4">
+      {showGptSearch && (
+      <select className="p-2 bg-gray-900 text-white m-2 " onChange={handleLanguageChange}>
+     {SUPPORTED_LANGUAGES.map(lang=><option key={lang.identifier} value={lang.identifier}> {lang.name}</option>)}
+      </select>
+  )}
+      <button onClick={handleGptSearchClick} className="text-white font-semibold bg-purple-700 rounded-lg px-4 mx-4 py-2  hover:bg-purple-900 transition-all duration-300">
+        
+          {showGptSearch?"Homepage":"GPT Search"}
+        </button>
       <img
-        className="h-10 w-10 object-cover rounded-full border-2 border-red-600 shadow-md"
+        className="h-10 w-10 object-cover  border-2 border-red-600 shadow-md"
         alt="user icon"
         src={user?.photoURL}
       />
       <button
         onClick={handleSignOut}
-        className="text-white font-semibold px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition-all duration-300"
+        className="text-white font-semibold px-4 py-2 rounded-lg mx-4 bg-red-600 hover:bg-red-700 transition-all duration-300"
       >
         Sign Out
       </button>
